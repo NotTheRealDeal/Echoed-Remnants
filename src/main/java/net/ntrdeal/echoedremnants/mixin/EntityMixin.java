@@ -46,7 +46,7 @@ public abstract class EntityMixin {
         if (this.getWorld().isClient() && MinecraftClient.getInstance().getCameraEntity() instanceof Entity entity) {
             return this.distanceTo(entity) <= 12f;
         }
-        return false;
+        return true;
 //        if (this.getWorld().isClient() && Functions.wearingMonocle(MinecraftClient.getInstance().getCameraEntity()) && this instanceof EchoedHolder holder) {
 //            System.out.println("wowies" + holder.ntrdeal$getEchoed());
 //            return holder.ntrdeal$getEchoed();
