@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "rose_gold_ingot",
+  "key": {
+    "#": {
+      "item": "echoedremnants:rose_gold_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "echoedremnants:rose_gold_block"
+  }
+}

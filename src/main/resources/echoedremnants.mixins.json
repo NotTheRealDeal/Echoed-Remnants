@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "package": "net.ntrdeal.echoedremnants.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractBlockStateMixin",
+    "EntityMixin",
+    "GameEventDispatchManagerMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PlayerEntityMixin",
+    "SculkShriekerBlockEntityMixin",
+    "SculkShriekerBlockMixin",
+    "SimpleGameEventDispatcherMixin",
+    "WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "BackgroundRendererMixin",
+    "EntityRendererDispatcherMixin",
+    "FeatureRendererMixin",
+    "InGameOverlayRendererMixin",
+    "LivingEntityRendererMixin",
+    "PlayerEntityRendererMixin"
+  ]
+}
