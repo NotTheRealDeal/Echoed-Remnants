@@ -70,7 +70,6 @@ public class SyncedEchoedComponent implements Component, AutoSyncedComponent, Se
         }
 
         if (this.wearingPendant) {
-//            if (this.entity.hasStatusEffect(ModEffects.ECHOED)) this.entity.removeStatusEffect(ModEffects.ECHOED);
             if (this.delay > 0) this.delay = 0;
             if (this.vibratingTicks > 0) this.vibratingTicks = 0;
             if (this.duration > 0) this.duration = 0;
@@ -116,6 +115,6 @@ public class SyncedEchoedComponent implements Component, AutoSyncedComponent, Se
     }
 
     public void setVibratingTicks(int ticks) {
-        if (!this.wearingPendant) this.vibratingTicks = ticks;
+        if (!this.wearingPendant) this.vibratingTicks = Math.max(ticks, 0);
     }
 }

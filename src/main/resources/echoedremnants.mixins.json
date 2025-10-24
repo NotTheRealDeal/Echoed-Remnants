@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AbstractBlockStateMixin",
+    "GameEventDispatchManagerMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",

@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 
 public class Functions {
     public static boolean wearingPendant(Entity entity) {
-        return entity instanceof LivingEntity livingEntity && ModComponents.ECHOED.get(livingEntity).wearingPendant();
+        return ModComponents.ECHOED.get(entity).wearingPendant();
     }
 
     public static boolean wearingMonocle(Entity entity) {
