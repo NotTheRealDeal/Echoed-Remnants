@@ -34,7 +34,7 @@ public abstract class SculkShriekerBlockEntityMixin extends BlockEntity implemen
 
     @Override
     public void ntrdeal$shriek(ServerWorld serverWorld, @Nullable Entity entity) {
-        shriek(serverWorld, entity);
+        this.shriek(serverWorld, entity);
     }
 
     @Inject(method = "shriek(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)V", at = @At("TAIL"))
@@ -51,9 +51,7 @@ public abstract class SculkShriekerBlockEntityMixin extends BlockEntity implemen
 
     @Inject(method = "readNbt", at = @At("TAIL"))
     private void ntrdeal$loadNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
-        if (nbt.contains("shrieks")) {
-            this.shrieks = nbt.getInt("shrieks");
-        }
+        this.shrieks = nbt.getInt("shrieks");
     }
 
     @Inject(method = "writeNbt", at = @At("TAIL"))

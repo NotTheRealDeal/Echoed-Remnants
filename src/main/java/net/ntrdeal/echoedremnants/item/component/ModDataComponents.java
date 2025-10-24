@@ -10,8 +10,8 @@ import java.util.function.UnaryOperator;
 
 public class ModDataComponents {
 
-    public static final ComponentType<EchoedComponent> ECHOED_FOOD = register("echoed_food", builder ->
-            builder.codec(EchoedComponent.CODEC).packetCodec(EchoedComponent.PACKET_CODEC));
+    public static final ComponentType<EchoedFoodComponent> ECHOED_FOOD = register("echoed_food", builder ->
+            builder.codec(EchoedFoodComponent.CODEC).packetCodec(EchoedFoodComponent.PACKET_CODEC));
 
     private static <T> ComponentType<T> register(String name, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(EchoedRemnants.MOD_ID, name),

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class InGameOverlayRendererMixin {
     @Inject(method = "renderInWallOverlay", at = @At("HEAD"), cancellable = true)
     private static void ntrdeal$preventInWallOverlay(Sprite sprite, MatrixStack matrices, CallbackInfo ci) {
-        if (Functions.getEchoed(MinecraftClient.getInstance().getCameraEntity())) {
+        if (Functions.hasEcho(MinecraftClient.getInstance().getCameraEntity())) {
             ci.cancel();
         }
     }

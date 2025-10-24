@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class EntityRendererDispatcherMixin {
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isInvisible()Z"))
     private boolean ntrdeal$echoed(Entity instance) {
-        return instance.isInvisible() || Functions.getEchoed(instance);
+        return instance.isInvisible() || Functions.hasEcho(instance);
     }
 }

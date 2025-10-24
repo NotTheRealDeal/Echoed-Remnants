@@ -2,7 +2,6 @@ package net.ntrdeal.echoedremnants.block.entity.renderer;
 
 import net.minecraft.block.entity.SculkShriekerBlockEntity;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -12,10 +11,7 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RotationAxis;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
 import net.ntrdeal.echoedremnants.block.ModProperties;
 
 public class SculkShriekerBlockEntityRenderer implements BlockEntityRenderer<SculkShriekerBlockEntity> {

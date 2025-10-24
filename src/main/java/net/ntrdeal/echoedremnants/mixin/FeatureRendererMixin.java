@@ -14,6 +14,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public abstract class FeatureRendererMixin {
     @ModifyArg(method = "renderModel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/VertexConsumerProvider;getBuffer(Lnet/minecraft/client/render/RenderLayer;)Lnet/minecraft/client/render/VertexConsumer;"))
     private static RenderLayer ntrdeal$echoedLayer(RenderLayer original, @Local(argsOnly = true) LivingEntity entity) {
-        return original == null ? null : Functions.getEchoed(entity) ? EchoedRemnantsClient.ECHOED.getRenderLayer(Functions.transparentLayer(original)) : original;
+        return original == null ? null : Functions.hasEcho(entity) ? EchoedRemnantsClient.ECHOED.getRenderLayer(Functions.transparentLayer(original)) : original;
     }
 }

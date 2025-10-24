@@ -7,11 +7,17 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.MathHelper;
 import net.ntrdeal.echoedremnants.entity.effect.ModEffects;
+import net.ntrdeal.echoedremnants.misc.Functions;
 
 public class EchoedFogModifier implements BackgroundRenderer.StatusEffectFogModifier {
     @Override
     public RegistryEntry<StatusEffect> getStatusEffect() {
         return ModEffects.ECHOED;
+    }
+
+    @Override
+    public boolean shouldApply(LivingEntity entity, float tickDelta) {
+        return BackgroundRenderer.StatusEffectFogModifier.super.shouldApply(entity, tickDelta) && !Functions.wearingPendant(entity);
     }
 
     @Override

@@ -1,24 +1,19 @@
 package net.ntrdeal.echoedremnants;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.ntrdeal.echoedremnants.block.entity.renderer.SculkShriekerBlockEntityRenderer;
 import net.ntrdeal.echoedremnants.misc.Functions;
 import net.ntrdeal.echoedremnants.particle.ModParticles;
-import org.ladysnake.satin.api.event.EntitiesPreRenderCallback;
 import org.ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import org.ladysnake.satin.api.managed.ManagedCoreShader;
 import org.ladysnake.satin.api.managed.ManagedShaderEffect;
 import org.ladysnake.satin.api.managed.ShaderEffectManager;
-import org.ladysnake.satin.api.managed.uniform.Uniform1f;
 
 public class EchoedRemnantsClient implements ClientModInitializer {
 
@@ -29,7 +24,7 @@ public class EchoedRemnantsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ShaderEffectRenderCallback.EVENT.register(tickDelta -> {
-            if (Functions.getEchoed(MinecraftClient.getInstance().getCameraEntity())) {
+            if (Functions.hasEcho(MinecraftClient.getInstance().getCameraEntity())) {
                 ECHOED_SHADER.render(tickDelta);
             }
         });

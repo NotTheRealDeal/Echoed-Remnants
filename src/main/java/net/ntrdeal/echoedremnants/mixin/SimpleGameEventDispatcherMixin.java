@@ -1,5 +1,6 @@
 package net.ntrdeal.echoedremnants.mixin;
 
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.event.GameEvent;
@@ -17,8 +18,10 @@ public class SimpleGameEventDispatcherMixin {
     @Inject(method = "dispatch", at = @At("HEAD"), cancellable = true)
     private void ntrdeal$pendant(RegistryEntry<GameEvent> event, Vec3d pos, GameEvent.Emitter emitter, GameEventDispatcher.DispatchCallback callback, CallbackInfoReturnable<Boolean> cir) {
         int frequency = Vibrations.getFrequency(event);
-        if ((frequency <= 8 || frequency >= 14) && Functions.wearingPendant(emitter.sourceEntity())) {
-            cir.setReturnValue(false);
+        boolean entityEvent = (frequency <= 8 || frequency >= 14);
+
+        if (entityEvent && emitter.sourceEntity() instanceof LivingEntity entity) {
+            if (Functions.wearingPendant(entity)) cir.setReturnValue(false);
         }
     }
 }

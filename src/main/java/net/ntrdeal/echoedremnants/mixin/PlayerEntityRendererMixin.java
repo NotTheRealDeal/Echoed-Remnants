@@ -16,6 +16,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class PlayerEntityRendererMixin {
     @Redirect(method = "renderArm", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/VertexConsumerProvider;getBuffer(Lnet/minecraft/client/render/RenderLayer;)Lnet/minecraft/client/render/VertexConsumer;"))
     private VertexConsumer ntrdeal$echoed(VertexConsumerProvider instance, RenderLayer layer, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player) {
-        return instance.getBuffer(Functions.getEchoed(player) ? EchoedRemnantsClient.ECHOED.getRenderLayer(Functions.transparentLayer(layer)) : layer);
+        return instance.getBuffer(Functions.hasEcho(player) ? EchoedRemnantsClient.ECHOED.getRenderLayer(Functions.transparentLayer(layer)) : layer);
     }
 }

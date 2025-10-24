@@ -23,6 +23,14 @@
 		],
 		"fabric-datagen": [
 			"net.ntrdeal.echoedremnants.EchoedRemnantsDataGenerator"
+		],
+		"cardinal-components-entity": [
+			"net.ntrdeal.echoedremnants.component.ModComponents"
+		]
+	},
+	"custom": {
+		"cardinal-components": [
+			"echoedremnants:echoed"
 		]
 	},
 	"mixins": [

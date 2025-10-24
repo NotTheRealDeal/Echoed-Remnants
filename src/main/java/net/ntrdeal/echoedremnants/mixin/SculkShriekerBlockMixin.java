@@ -19,12 +19,11 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.Unit;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.ntrdeal.echoedremnants.block.ModProperties;
-import net.ntrdeal.echoedremnants.item.component.EchoedComponent;
+import net.ntrdeal.echoedremnants.item.component.EchoedFoodComponent;
 import net.ntrdeal.echoedremnants.item.component.ModDataComponents;
 import net.ntrdeal.echoedremnants.misc.SculkShriekerAccessor;
 import org.spongepowered.asm.mixin.Final;
@@ -69,7 +68,7 @@ public abstract class SculkShriekerBlockMixin extends BlockWithEntity implements
                 ItemStack stack = item.getStack();
 
                 if (stack.contains(DataComponentTypes.FOOD) && state.get(ECHO_SHARDS) >= 1 && state.get(Properties.CAN_SUMMON)) {
-                    EchoedComponent component = stack.get(ModDataComponents.ECHOED_FOOD);
+                    EchoedFoodComponent component = stack.get(ModDataComponents.ECHOED_FOOD);
                     if (component != null) {
                         if (component.shrieks() < 3) {
                             ItemStack newStack = stack.split(1);
@@ -78,7 +77,7 @@ public abstract class SculkShriekerBlockMixin extends BlockWithEntity implements
                         }
                     } else {
                         ItemStack newStack = stack.split(1);
-                        newStack.set(ModDataComponents.ECHOED_FOOD, EchoedComponent.DEFAULT);
+                        newStack.set(ModDataComponents.ECHOED_FOOD, EchoedFoodComponent.DEFAULT);
                         ItemScatterer.spawn(world, item.getX(), item.getY(), item.getZ(), newStack);
                     }
                 }

@@ -1,7 +1,6 @@
 package net.ntrdeal.echoedremnants;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.world.event.GameEvent;
 import net.ntrdeal.echoedremnants.block.ModBlocks;
 import net.ntrdeal.echoedremnants.entity.ModEntities;
 import net.ntrdeal.echoedremnants.item.ModItems;

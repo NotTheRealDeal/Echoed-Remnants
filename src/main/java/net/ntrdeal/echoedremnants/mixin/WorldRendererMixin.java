@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 public class WorldRendererMixin {
     @ModifyReturnValue(method = "hasBlindnessOrDarkness", at = @At("RETURN"))
     private boolean ntrdeal$echoed(boolean original, Camera camera) {
-        return original || Functions.getEchoed(camera.getFocusedEntity());
+        return original || Functions.hasEcho(camera.getFocusedEntity());
     }
 }
