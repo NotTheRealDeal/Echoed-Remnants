@@ -47,5 +47,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('E', Items.ECHO_SHARD)
                 .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(Items.ECHO_SHARD))
                 .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.MONOCLE)
+                .pattern(" R ")
+                .pattern(" ER")
+                .pattern(" R ")
+                .input('R', ModItems.ROSE_GOLD_INGOT)
+                .input('E', Items.ECHO_SHARD)
+                .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(Items.ECHO_SHARD))
+                .offerTo(exporter);
     }
 }

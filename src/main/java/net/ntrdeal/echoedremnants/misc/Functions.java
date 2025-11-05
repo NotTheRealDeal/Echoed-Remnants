@@ -1,13 +1,15 @@
 package net.ntrdeal.echoedremnants.misc;
 
+import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderPhase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.ntrdeal.echoedremnants.component.ModComponents;
 import org.jetbrains.annotations.Nullable;
 import org.ladysnake.satin.impl.RenderLayerDuplicator;
@@ -23,7 +25,7 @@ public class Functions {
         return entity instanceof LivingEntity livingEntity && ModComponents.ECHOED.get(livingEntity).wearingMonocle();
     }
 
-    public static boolean hasEcho(Entity entity) {
+    public static boolean hasEcho(@Nullable Entity entity) {
         return entity instanceof LivingEntity livingEntity && ModComponents.ECHOED.get(livingEntity).echoed();
     }
 
@@ -31,10 +33,10 @@ public class Functions {
         return entity instanceof LivingEntity livingEntity && ModComponents.ECHOED.get(livingEntity).vibrating();
     }
 
-    public static boolean shouldPhase(Entity holder, VoxelShape shape, BlockPos pos, ShapeContext context) {
-        if (holder instanceof LivingEntity entity && hasEcho(entity)) {
-            return (holder.getY() < (double) pos.getY() + shape.getMax(Direction.Axis.Y) - (holder.isOnGround() ? 8.05 / 16.0 : 0.0015)) || context.isDescending();
-        } else return false;
+    public static VoxelShape shouldPhase(VoxelShape shape, BlockView view, BlockPos pos, ShapeContext context) {
+        if (!shape.isEmpty() && hasEcho(context instanceof EntityShapeContext entityContext ? entityContext.getEntity() : null)) {
+            return !context.isDescending() && context.isAbove(shape, pos, true)  ? shape : VoxelShapes.empty();
+        } else return shape;
     }
 
     public static RenderLayer modifiedParameters(RenderLayer layer, @Nullable Boolean transparent, Consumer<RenderLayer.MultiPhaseParameters.Builder> modifiers) {

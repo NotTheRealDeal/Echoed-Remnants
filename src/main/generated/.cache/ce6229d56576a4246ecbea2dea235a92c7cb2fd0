@@ -1,5 +1,6 @@
-// 1.21.1	2025-10-17T21:19:45.8378603	Echoed Remnants/Recipes
+// 1.21.1	2025-10-31T04:36:13.6442398	Echoed Remnants/Recipes
 afd03dddc7fd2f0019874a185c5c6bf4d962b5f2 data\echoedremnants\advancement\recipes\misc\alloy_rose_gold_ingot.json
+2320202d28f824d55bb40b1bedfabd3cd9da3d08 data\echoedremnants\recipe\monocle.json
 49c7f5c8b83859413cf15f930060c2e04256e986 data\echoedremnants\recipe\rose_gold_ingot_from_nuggets.json
 b21c5bbe11ec7984b5b1c9f8b9d7019b049469af data\echoedremnants\advancement\recipes\misc\rose_gold_ingot_from_nuggets.json
 2ff95205e7a28eb9eec447b3ada62599c6f323ea data\echoedremnants\advancement\recipes\building_blocks\rose_gold_block_from_rose_gold_ingots.json
@@ -8,6 +9,7 @@ b21c5bbe11ec7984b5b1c9f8b9d7019b049469af data\echoedremnants\advancement\recipes
 05d6f24612e84ade170169591ec816646147ea43 data\echoedremnants\recipe\rose_gold_nugget.json
 64b977807749a608fa08f899c51b0cf022a2e99e data\echoedremnants\advancement\recipes\misc\rose_gold_ingot.json
 35eb6ffc8f8da835858b18fe2128563fe29d12ae data\echoedremnants\recipe\alloy_rose_gold_ingot.json
+4b891ef082d2b7a281e6a0f21a2c74b8bb545910 data\echoedremnants\advancement\recipes\combat\monocle.json
 5f0a283ccc2241941b8180fb258f0fbf2d2de9a8 data\echoedremnants\recipe\rose_gold_ingot.json
 bf789a16de7b28875462664156a88d0f5c5c9391 data\echoedremnants\advancement\recipes\misc\rose_gold_nugget.json
 fffd2b4151889c140e44a829a6a55374f8d94001 data\echoedremnants\recipe\pendant.json

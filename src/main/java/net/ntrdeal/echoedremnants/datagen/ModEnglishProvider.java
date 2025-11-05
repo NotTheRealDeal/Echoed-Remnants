@@ -20,6 +20,10 @@ public class ModEnglishProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ROSE_GOLD_INGOT, "Rose Gold Ingot");
         translationBuilder.add(ModBlocks.ROSE_GOLD_BLOCK, "Rose Gold Block");
         translationBuilder.add(ModItems.PENDANT, "Pendant");
+        translationBuilder.add(ModItems.MONOCLE, "Monocle");
+
+        translationBuilder.add("death.attack.echoed_wall", "%1$s faded away.");
+        translationBuilder.add("death.attack.echoed_wall.player", "%1$s faded away whilst fighting %2$s.");
 
         translationBuilder.add(ModEffects.ECHOED.value(), "Echoed");
     }

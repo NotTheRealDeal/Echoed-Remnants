@@ -3,19 +3,17 @@ package net.ntrdeal.echoedremnants.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.SculkShriekerBlockEntity;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.ItemScatterer;
@@ -37,7 +35,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SculkShriekerBlock.class)
 public abstract class SculkShriekerBlockMixin extends BlockWithEntity implements Waterloggable {
     @Shadow @Final public static BooleanProperty SHRIEKING;
-
+    @Shadow @Final public static BooleanProperty CAN_SUMMON;
     @Unique private static final IntProperty ECHO_SHARDS = ModProperties.ECHO_SHARDS;
 
     protected SculkShriekerBlockMixin(Settings settings) {
@@ -58,35 +56,21 @@ public abstract class SculkShriekerBlockMixin extends BlockWithEntity implements
                 return ItemActionResult.SUCCESS;
             }
         }
+
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 
     @WrapMethod(method = "onSteppedOn")
     private void ntrdeal$echoedCrafting(World world, BlockPos pos, BlockState state, Entity entity, Operation<Void> original) {
-        if (entity instanceof ItemEntity item) {
-            if (!state.get(SHRIEKING)) {
-                ItemStack stack = item.getStack();
+        if (state.get(CAN_SUMMON) && !state.get(SHRIEKING) && state.get(ECHO_SHARDS) >= 1 && entity instanceof ItemEntity item
+        && item.getStack() instanceof ItemStack stack && (stack.contains(DataComponentTypes.FOOD) || stack.contains(ModDataComponents.ECHOED_FOOD))
+        && EchoedFoodComponent.levelUp(stack.get(ModDataComponents.ECHOED_FOOD)) instanceof EchoedFoodComponent component && component.shrieks() < 5) {
 
-                if (stack.contains(DataComponentTypes.FOOD) && state.get(ECHO_SHARDS) >= 1 && state.get(Properties.CAN_SUMMON)) {
-                    EchoedFoodComponent component = stack.get(ModDataComponents.ECHOED_FOOD);
-                    if (component != null) {
-                        if (component.shrieks() < 3) {
-                            ItemStack newStack = stack.split(1);
-                            newStack.set(ModDataComponents.ECHOED_FOOD, component.levelUp());
-                            ItemScatterer.spawn(world, item.getX(), item.getY(), item.getZ(), newStack);
-                        }
-                    } else {
-                        ItemStack newStack = stack.split(1);
-                        newStack.set(ModDataComponents.ECHOED_FOOD, EchoedFoodComponent.DEFAULT);
-                        ItemScatterer.spawn(world, item.getX(), item.getY(), item.getZ(), newStack);
-                    }
-                }
+            ItemStack newStack = stack.split(1);
+            newStack.set(ModDataComponents.ECHOED_FOOD, component);
+            ItemScatterer.spawn(world, item.getX(), item.getY(), item.getZ(), newStack);
 
-                if (item.getOwner() instanceof ServerPlayerEntity)
-                    original.call(world, pos, state, entity);
-                else if (world instanceof ServerWorld serverWorld)
-                    serverWorld.getBlockEntity(pos, BlockEntityType.SCULK_SHRIEKER).ifPresent(shrieker -> ((SculkShriekerAccessor)shrieker).ntrdeal$shriek(serverWorld, entity));
-            }
+            if (world instanceof ServerWorld serverWorld && serverWorld.getBlockEntity(pos) instanceof SculkShriekerBlockEntity shrieker) ((SculkShriekerAccessor) shrieker).ntrdeal$shriek(serverWorld, item);
 
             super.onSteppedOn(world, pos, state, entity);
         } else original.call(world, pos, state, entity);

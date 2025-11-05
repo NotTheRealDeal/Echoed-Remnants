@@ -1,7 +1,6 @@
 package net.ntrdeal.echoedremnants.block.entity.renderer;
 
 import net.minecraft.block.entity.SculkShriekerBlockEntity;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -16,9 +15,12 @@ import net.ntrdeal.echoedremnants.block.ModProperties;
 
 public class SculkShriekerBlockEntityRenderer implements BlockEntityRenderer<SculkShriekerBlockEntity> {
 
-    private static final float scale = 0.6f;
+    private static final float SCALE = 0.6f;
+    private static final ItemStack SHARD = Items.ECHO_SHARD.getDefaultStack();
+    private final ItemRenderer itemRenderer;
 
     public SculkShriekerBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
+        this.itemRenderer = context.getItemRenderer();
     }
 
     @Override
@@ -26,18 +28,15 @@ public class SculkShriekerBlockEntityRenderer implements BlockEntityRenderer<Scu
         int shards = entity.getCachedState().get(ModProperties.ECHO_SHARDS);
 
         if (shards >= 1) {
-            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-            ItemStack stack = Items.ECHO_SHARD.getDefaultStack();
-
             matrices.push();
-            matrices.scale(scale, scale, scale);
+            matrices.scale(SCALE, SCALE, SCALE);
             matrices.translate(0f, scaled(0.7f), scaled(0.5f));
 
             for (int index = 0; index < shards; index++) {
                 matrices.translate(scaled(0.5f), 0, scaled(0.5f));
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90f));
                 matrices.push(); matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(45f)); matrices.translate(scaled(0.1f), 0, 0);
-                itemRenderer.renderItem(stack, ModelTransformationMode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
+                this.itemRenderer.renderItem(SHARD, ModelTransformationMode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
                 matrices.pop();
             }
 
@@ -46,6 +45,6 @@ public class SculkShriekerBlockEntityRenderer implements BlockEntityRenderer<Scu
     }
 
     private static float scaled(float input) {
-        return input / scale;
+        return input / SCALE;
     }
 }

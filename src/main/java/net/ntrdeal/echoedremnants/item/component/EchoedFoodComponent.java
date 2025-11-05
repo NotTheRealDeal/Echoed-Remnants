@@ -14,6 +14,7 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.ntrdeal.echoedremnants.entity.effect.ModEffects;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -36,8 +37,12 @@ public record EchoedFoodComponent(int delay, int duration, int shrieks) implemen
             EchoedFoodComponent::new
     );
 
-    public EchoedFoodComponent levelUp() {
-        return new EchoedFoodComponent((int) Math.round(Math.pow(2, shrieks()))*100, (int) Math.round(Math.pow(2, shrieks()+1))*600, shrieks()+1);
+    public static EchoedFoodComponent levelUp(@Nullable EchoedFoodComponent component) {
+        if (component != null) return new EchoedFoodComponent(
+                (int) Math.round(Math.pow(2, component.shrieks()))*100,
+                (int) Math.round(Math.pow(2, component.shrieks()+1))*600,
+                component.shrieks() + 1
+        ); else return DEFAULT;
     }
 
     public StatusEffectInstance get() {

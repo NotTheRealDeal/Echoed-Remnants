@@ -2,10 +2,7 @@ package net.ntrdeal.echoedremnants;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.ntrdeal.echoedremnants.datagen.ModBlockTagProvider;
-import net.ntrdeal.echoedremnants.datagen.ModEnglishProvider;
-import net.ntrdeal.echoedremnants.datagen.ModModelProvider;
-import net.ntrdeal.echoedremnants.datagen.ModRecipeProvider;
+import net.ntrdeal.echoedremnants.datagen.*;
 
 public class EchoedRemnantsDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -16,6 +13,7 @@ public class EchoedRemnantsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModEnglishProvider::new);
 
 		pack.addProvider(ModBlockTagProvider::new);
+		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 	}
 }

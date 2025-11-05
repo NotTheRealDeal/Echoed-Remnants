@@ -27,5 +27,6 @@ public class ModItems {
     public static void register(){
         ModDataComponents.register();
         ModArmorMaterials.register();
+        ModItemGroups.register();
     }
 }

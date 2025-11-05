@@ -3,6 +3,7 @@ package net.ntrdeal.echoedremnants.item.component;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -11,7 +12,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.ntrdeal.echoedremnants.EchoedRemnants;
-import net.ntrdeal.echoedremnants.item.ModItems;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ModArmorMaterials {
                 map.put(ArmorItem.Type.CHESTPLATE, getProtection(ArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE));
                 map.put(ArmorItem.Type.HELMET, getProtection(ArmorMaterials.GOLD, ArmorItem.Type.HELMET));
                 map.put(ArmorItem.Type.BODY, getProtection(ArmorMaterials.GOLD, ArmorItem.Type.BODY));
-            }), 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT),
+            }), 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> Ingredient.ofItems(Items.ECHO_SHARD),
             List.of(new ArmorMaterial.Layer(Identifier.of(EchoedRemnants.MOD_ID, "rose_gold"))), 0, 0));
 
     private static int getProtection(RegistryEntry<ArmorMaterial> material, ArmorItem.Type type) {

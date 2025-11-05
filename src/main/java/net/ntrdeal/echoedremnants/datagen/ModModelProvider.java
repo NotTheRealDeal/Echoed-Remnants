@@ -23,5 +23,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ROSE_GOLD_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROSE_GOLD_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PENDANT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MONOCLE, Models.GENERATED);
     }
 }

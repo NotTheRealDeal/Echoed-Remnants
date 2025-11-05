@@ -4,13 +4,14 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AbstractBlockStateMixin",
+    "DamageSourcesMixin",
     "GameEventDispatchManagerMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
+    "MilkBucketItemMixin",
     "PlayerEntityMixin",
     "SculkShriekerBlockEntityMixin",
     "SculkShriekerBlockMixin",
-    "SimpleGameEventDispatcherMixin",
     "WorldRendererMixin"
   ],
   "injectors": {
@@ -23,6 +24,7 @@
     "BackgroundRendererMixin",
     "EntityRendererDispatcherMixin",
     "FeatureRendererMixin",
+    "InGameHudMixin",
     "InGameOverlayRendererMixin",
     "LivingEntityRendererMixin",
     "PlayerEntityRendererMixin"

@@ -7,6 +7,7 @@ import net.minecraft.block.entity.SculkShriekerBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.event.Vibrations;
@@ -26,15 +27,20 @@ public abstract class SculkShriekerBlockEntityMixin extends BlockEntity implemen
 
     @Unique private int shrieks = 0;
 
+    @Shadow protected abstract void shriek(ServerWorld world, @Nullable Entity entity);
+    @Shadow private int warningLevel;
+    @Shadow protected abstract boolean trySyncWarningLevel(ServerWorld world, ServerPlayerEntity player);
+
     public SculkShriekerBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
-    @Shadow protected abstract void shriek(ServerWorld world, @Nullable Entity entity);
-
     @Override
-    public void ntrdeal$shriek(ServerWorld serverWorld, @Nullable Entity entity) {
-        this.shriek(serverWorld, entity);
+    public void ntrdeal$shriek(ServerWorld world, @Nullable Entity entity) {
+        if (SculkShriekerBlockEntity.findResponsiblePlayerFromEntity(entity) instanceof ServerPlayerEntity player) {
+            this.warningLevel = 0;
+            this.trySyncWarningLevel(world, player);
+        } this.shriek(world, entity);
     }
 
     @Inject(method = "shriek(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)V", at = @At("TAIL"))

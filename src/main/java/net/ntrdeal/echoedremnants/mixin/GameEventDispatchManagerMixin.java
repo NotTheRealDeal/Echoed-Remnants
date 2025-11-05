@@ -32,25 +32,6 @@ public class GameEventDispatchManagerMixin {
 
     @Unique
     private static boolean canAccept(RegistryEntry<GameEvent> gameEvent, GameEvent.Emitter emitter) {
-        if (!gameEvent.isIn(GameEventTags.VIBRATIONS)) {
-            return false;
-        } else {
-            Entity entity = emitter.sourceEntity();
-            if (entity != null) {
-                if (entity.isSpectator()) {
-                    return false;
-                }
-
-                if (entity.bypassesSteppingEffects() && gameEvent.isIn(GameEventTags.IGNORE_VIBRATIONS_SNEAKING)) {
-                    return false;
-                }
-
-                if (entity.occludeVibrationSignals()) {
-                    return false;
-                }
-            }
-
-            return emitter.affectedState() == null || !emitter.affectedState().isIn(BlockTags.DAMPENS_VIBRATIONS);
-        }
+        return (emitter.sourceEntity() instanceof Entity entity && entity.bypassesSteppingEffects() && gameEvent.isIn(GameEventTags.IGNORE_VIBRATIONS_SNEAKING)) || (emitter.affectedState() == null || emitter.affectedState().isIn(BlockTags.DAMPENS_VIBRATIONS));
     }
 }

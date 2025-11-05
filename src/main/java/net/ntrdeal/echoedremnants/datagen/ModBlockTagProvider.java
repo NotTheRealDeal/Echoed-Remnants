@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.ntrdeal.echoedremnants.block.ModBlockTags;
+import net.ntrdeal.echoedremnants.block.ModBlocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +22,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(ModBlockTags.CANNOT_ECHO)
                 .addTag(BlockTags.DAMPENS_VIBRATIONS)
-                .add(Blocks.BARRIER,
+                .add(
+                        Blocks.BARRIER,
                         Blocks.BEDROCK,
                         Blocks.END_PORTAL,
                         Blocks.END_PORTAL_FRAME,
@@ -30,6 +32,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         Blocks.REPEATING_COMMAND_BLOCK,
                         Blocks.CHAIN_COMMAND_BLOCK,
                         Blocks.STRUCTURE_BLOCK,
-                        Blocks.JIGSAW);
+                        Blocks.JIGSAW
+                );
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.ROSE_GOLD_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.ROSE_GOLD_BLOCK);
     }
 }
