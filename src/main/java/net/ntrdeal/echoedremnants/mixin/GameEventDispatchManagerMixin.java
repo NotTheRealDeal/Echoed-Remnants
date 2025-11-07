@@ -26,12 +26,12 @@ public class GameEventDispatchManagerMixin {
 
         if (entityEvent && emitter.sourceEntity() instanceof LivingEntity entity) {
             if (Functions.wearingPendant(entity)) ci.cancel();
-            else if (canAccept(event, emitter)) ModComponents.ECHOED.get(entity).setVibratingTicks(50);
+            else if (!cantAccept(event, emitter)) ModComponents.ECHOED.get(entity).setVibratingTicks(50);
         }
     }
 
     @Unique
-    private static boolean canAccept(RegistryEntry<GameEvent> gameEvent, GameEvent.Emitter emitter) {
+    private static boolean cantAccept(RegistryEntry<GameEvent> gameEvent, GameEvent.Emitter emitter) {
         return (emitter.sourceEntity() instanceof Entity entity && entity.bypassesSteppingEffects() && gameEvent.isIn(GameEventTags.IGNORE_VIBRATIONS_SNEAKING)) || (emitter.affectedState() == null || emitter.affectedState().isIn(BlockTags.DAMPENS_VIBRATIONS));
     }
 }

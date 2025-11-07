@@ -25,6 +25,7 @@
     "FeatureRendererMixin",
     "InGameHudMixin",
     "InGameOverlayRendererMixin",
+    "LivingEntityMixinClient",
     "LivingEntityRendererMixin",
     "PlayerEntityRendererMixin",
     "WorldRendererMixin"

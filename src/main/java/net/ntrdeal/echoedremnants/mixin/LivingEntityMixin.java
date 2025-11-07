@@ -53,14 +53,6 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         }
     }
 
-    @ModifyReturnValue(method = "isGlowing", at = @At("RETURN"))
-    private boolean ntrdeal$vibrating(boolean original) {
-        if (this.getWorld().isClient()) {
-            boolean glow = MinecraftClient.getInstance().getCameraEntity() instanceof LivingEntity entity && this.distanceTo(entity) <= 8f && Functions.wearingMonocle(entity) && Functions.hasVibrating(this);
-            return original || glow;
-        } else return original;
-    }
-
     @WrapMethod(method = "heal")
     private void ntrdeal$preventHealing(float amount, Operation<Void> original) {
         if (!Functions.hasEcho(this)) original.call(amount);
