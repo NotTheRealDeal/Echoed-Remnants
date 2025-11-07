@@ -1,5 +1,7 @@
 package net.ntrdeal.echoedremnants.misc;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.RenderLayer;
@@ -39,6 +41,7 @@ public class Functions {
         } else return shape;
     }
 
+    @Environment(EnvType.CLIENT)
     public static RenderLayer modifiedParameters(RenderLayer layer, @Nullable Boolean transparent, Consumer<RenderLayer.MultiPhaseParameters.Builder> modifiers) {
         RenderLayerDuplicator.SatinRenderLayer satinLayer = (RenderLayerDuplicator.SatinRenderLayer) layer;
         return RenderLayer.of(
@@ -52,6 +55,7 @@ public class Functions {
         );
     }
 
+    @Environment(EnvType.CLIENT)
     public static RenderLayer transparentLayer(RenderLayer layer) {
         return modifiedParameters(layer, true, builder -> builder.transparency(RenderPhase.TRANSLUCENT_TRANSPARENCY));
     }
