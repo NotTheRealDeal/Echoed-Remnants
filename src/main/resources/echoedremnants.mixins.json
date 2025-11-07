@@ -11,8 +11,7 @@
     "MilkBucketItemMixin",
     "PlayerEntityMixin",
     "SculkShriekerBlockEntityMixin",
-    "SculkShriekerBlockMixin",
-    "WorldRendererMixin"
+    "SculkShriekerBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -27,6 +26,7 @@
     "InGameHudMixin",
     "InGameOverlayRendererMixin",
     "LivingEntityRendererMixin",
-    "PlayerEntityRendererMixin"
+    "PlayerEntityRendererMixin",
+    "WorldRendererMixin"
   ]
 }
