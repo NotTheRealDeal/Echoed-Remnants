@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "package": "net.ntrdeal.echoedremnants.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AbstractBlockStateMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PlayerMixin",
+    "SculkShriekerBlockEntityMixin",
+    "SculkShriekerBlockMixin",
+    "ServerLevelEntityCallbacksMixin",
+    "VibrationSystemUserMixin"
+  ],
+  "client": [
+    "client.AvatarRendererMixin",
+    "client.CameraMixin",
+    "client.FogRendererMixin",
+    "client.HeartTypeMixin",
+    "client.MinecraftMixin",
+    "client.LivingEntityRendererMixin",
+    "client.ScreenEffectRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}

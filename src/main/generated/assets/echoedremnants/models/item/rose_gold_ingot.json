@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "echoedremnants:item/rose_gold_ingot"
+  }
+}

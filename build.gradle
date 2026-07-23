@@ -1,0 +1,81 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'io.github.ladysnake.chenille' version "${chenille_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+repositories {
+	mavenLocal()
+	chenille.repositories.ladysnake()
+	chenille.repositories.modrinth()
+}
+
+loom {
+	accessWidenerPath = "src/main/resources/echoedremnants.classtweaker"
+}
+
+fabricApi {
+	configureDataGeneration {
+		client = true
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	//compile mods
+	includeImplementation "io.github.nottherealdeal:realapi:${project.realapi_version}"
+	includeImplementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cca_version}"
+	includeImplementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
+
+	//runtime mods
+	runtimeOnly "maven.modrinth:modmenu:${project.modmenu_version}"
+	runtimeOnly "maven.modrinth:carpet:${project.carpet_version}"
+	runtimeOnly "maven.modrinth:sodium:${project.sodium_version}"
+	runtimeOnly "maven.modrinth:jei:${project.jei_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+
+	repositories {
+	}
+}

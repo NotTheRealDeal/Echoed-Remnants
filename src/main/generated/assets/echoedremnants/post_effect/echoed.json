@@ -1,0 +1,210 @@
+{
+  "passes": [
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "minecraft:main"
+        }
+      ],
+      "output": "echoedremnants:ping",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:ping"
+        }
+      ],
+      "output": "echoedremnants:pong",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:pong"
+        }
+      ],
+      "output": "echoedremnants:ping",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:ping"
+        }
+      ],
+      "output": "echoedremnants:pong",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:pong"
+        }
+      ],
+      "output": "echoedremnants:ping",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:ping"
+        }
+      ],
+      "output": "echoedremnants:pong",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "type": "vec2",
+            "value": [
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "type": "float",
+            "value": 0.0
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    },
+    {
+      "fragment_shader": "minecraft:post/color_convolve",
+      "inputs": [
+        {
+          "bilinear": true,
+          "sampler_name": "In",
+          "target": "echoedremnants:pong"
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "ColorConfig": [
+          {
+            "type": "vec3",
+            "value": [
+              0.5,
+              0.0,
+              0.3
+            ]
+          },
+          {
+            "type": "vec3",
+            "value": [
+              0.5,
+              0.25,
+              0.3
+            ]
+          },
+          {
+            "type": "vec3",
+            "value": [
+              0.5,
+              0.15,
+              0.4
+            ]
+          }
+        ]
+      },
+      "vertex_shader": "minecraft:core/screenquad"
+    }
+  ],
+  "targets": {
+    "echoedremnants:ping": {},
+    "echoedremnants:pong": {}
+  }
+}

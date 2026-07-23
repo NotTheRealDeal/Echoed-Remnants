@@ -1,0 +1,10 @@
+{
+  "block.echoedremnants.rose_gold_block": "Rose Gold Block",
+  "death.attack.echoed": "%1$s faded away.",
+  "death.attack.echoed.player": "%1$s faded away whilst fighting %2$s.",
+  "effect.echoedremnants.echoed": "Echoed",
+  "item.echoedremnants.rose_gold_ingot": "Rose Gold Ingot",
+  "item.echoedremnants.rose_gold_monocle": "Rose Gold Monocle",
+  "item.echoedremnants.rose_gold_nugget": "Rose Gold Nugget",
+  "item.echoedremnants.rose_gold_pendant": "Rose Gold Pendant"
+}

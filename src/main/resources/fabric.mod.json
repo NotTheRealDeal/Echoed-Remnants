@@ -1,0 +1,48 @@
+{
+	"schemaVersion": 1,
+	"id": "echoedremnants",
+	"version": "${version}",
+	"name": "Echoed Remnants",
+	"description": "Adds many uses to echo shards, and a cool effect!",
+	"authors": [
+		"Coder: NTRDeal",
+		"Artist: Evan2Awesome"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/echoedremnants"
+	},
+	"license": "MIT",
+	"icon": "icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.ntrdeal.echoedremnants.EchoedRemnants"
+		],
+		"client": [
+			"net.ntrdeal.echoedremnants.EchoedRemnantsClient"
+		],
+		"fabric-datagen": [
+			"net.ntrdeal.echoedremnants.EchoedRemnantsDataGenerator"
+		],
+		"cardinal-components-entity": [
+			"net.ntrdeal.echoedremnants.component.ModComponents"
+		]
+	},
+	"custom": {
+		"cardinal-components": [
+			"echoedremnants:echolocation",
+			"echoedremnants:protection",
+			"echoedremnants:echoed"
+		]
+	},
+	"mixins": [
+		"echoedremnants.mixins.json"
+	],
+	"accessWidener": "echoedremnants.classtweaker",
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

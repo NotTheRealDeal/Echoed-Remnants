@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": "minecraft:echo_shard",
+    "R": "echoedremnants:rose_gold_ingot"
+  },
+  "pattern": [
+    " R ",
+    " ER",
+    " R "
+  ],
+  "result": {
+    "id": "echoedremnants:rose_gold_monocle"
+  }
+}
